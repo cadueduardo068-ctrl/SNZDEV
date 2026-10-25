@@ -1,0 +1,2 @@
+import {env} from 'cloudflare:workers';
+export async function rateLimit(key:string,max=60){if(!env.DB)throw Error('Banco indisponível');const minute=Math.floor(Date.now()/60000);const result=await env.DB.prepare('INSERT INTO rate_limits (key,minute,count) VALUES (?, ?, 1) ON CONFLICT(key) DO UPDATE SET minute=excluded.minute,count=CASE WHEN rate_limits.minute=excluded.minute THEN rate_limits.count+1 ELSE 1 END RETURNING count').bind(key,minute).first<{count:number}>();return (result?.count||0)<=max}
