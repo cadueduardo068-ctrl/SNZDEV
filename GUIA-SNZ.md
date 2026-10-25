@@ -20,11 +20,9 @@ A vitrine apresenta Velar Motors, Aura Architecture, Noir Atelier, Ignite Fitnes
 
 Os textos das interfaces estão em português brasileiro. Nomes próprios das marcas foram mantidos conforme o briefing. Os PNGs originais estão no pacote de imagens da entrega. O site usa WebP em 1600 × 900 e 720 × 405, escolhidos por `srcset`. A galeria mostra a imagem completa, sem cortar sua tipografia. Cada página permite ampliar a imagem.
 
-## Animação do hero
+## Imagem do hero
 
-Usa o mesmo vídeo de cinco segundos do prompt original, agora hospedado em `/media/meadow.mp4`, sem recriar a cena por código. `autoplay`, `muted`, `playsInline`, preload e loop estão configurados. O enquadramento mantém a placa em 9:8 e o vídeo com largura de 100%, altura de 112,5% e topo em −6,25%. A cena cobre toda a primeira tela; o hero tem altura mínima de 100svh.
-
-Não existe botão para iniciar a animação. Com preferência de movimento normal, ela começa automaticamente e oferece somente pausa/retomada. Com `prefers-reduced-motion: reduce`, a reprodução é interrompida e a cena permanece estática. Isso é intencional e não indica falha de carregamento. Restrições de reprodução impostas pelo navegador ou pelo sistema também podem impedir autoplay; há imagem de fallback para falha do vídeo. Nenhuma implementação pode revogar as restrições do navegador.
+O hero usa a imagem de workspace noturno enviada pelo proprietário. Ela foi otimizada em WebP, com variantes responsivas e enquadramento por object-fit: cover. Substitui a antiga cena em vídeo. As animações de entrada da interface continuam respeitando movimento reduzido.
 
 ## Contato
 
