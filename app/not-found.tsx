@@ -1,0 +1,1 @@
+export default function NotFound(){return <main className="error-state"><a href="/">SNZ DEV</a><h1>Este caminho não existe.</h1><p>O projeto pode ter sido movido ou ainda não estar publicado.</p><a className="button primary" href="/#projetos">Explorar projetos ↗</a></main>}

@@ -1,0 +1,254 @@
+[
+  {
+    "test": "anonymous read denied",
+    "result": "PASS"
+  },
+  {
+    "test": "anonymous upload denied",
+    "result": "PASS"
+  },
+  {
+    "test": "authenticated import",
+    "result": "PASS"
+  },
+  {
+    "test": "repeat import",
+    "result": "PASS"
+  },
+  {
+    "test": "import preserves existing records",
+    "result": "PASS"
+  },
+  {
+    "test": "atomic reorder accepted",
+    "result": "PASS"
+  },
+  {
+    "test": "order persisted",
+    "result": "PASS"
+  },
+  {
+    "test": "original order restored",
+    "result": "PASS"
+  },
+  {
+    "test": "create project",
+    "result": "PASS"
+  },
+  {
+    "test": "hidden project inaccessible",
+    "result": "PASS"
+  },
+  {
+    "test": "edit and publish",
+    "result": "PASS"
+  },
+  {
+    "test": "published detail",
+    "result": "PASS"
+  },
+  {
+    "test": "edited title visible",
+    "result": "PASS"
+  },
+  {
+    "test": "published on homepage",
+    "result": "PASS"
+  },
+  {
+    "test": "cross-origin rejected",
+    "result": "PASS"
+  },
+  {
+    "test": "unsafe URL rejected",
+    "result": "PASS"
+  },
+  {
+    "test": "live status requires real URL",
+    "result": "PASS"
+  },
+  {
+    "test": "forged image rejected",
+    "result": "PASS"
+  },
+  {
+    "test": "valid image upload R2",
+    "result": "PASS"
+  },
+  {
+    "test": "uploaded image retrievable",
+    "result": "PASS"
+  },
+  {
+    "test": "delete project",
+    "result": "PASS"
+  },
+  {
+    "test": "deleted detail inaccessible",
+    "result": "PASS"
+  },
+  {
+    "test": "visitor phone input removed",
+    "result": "PASS"
+  },
+  {
+    "test": "eight visible concepts",
+    "result": "PASS"
+  },
+  {
+    "test": "no decorative section numbers",
+    "result": "PASS"
+  },
+  {
+    "test": "detail velar-motors",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer velar-motors",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp velar-motors",
+    "result": "PASS"
+  },
+  {
+    "test": "image velar-motors",
+    "result": "PASS"
+  },
+  {
+    "test": "detail aura-architecture",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer aura-architecture",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp aura-architecture",
+    "result": "PASS"
+  },
+  {
+    "test": "image aura-architecture",
+    "result": "PASS"
+  },
+  {
+    "test": "detail noir-atelier",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer noir-atelier",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp noir-atelier",
+    "result": "PASS"
+  },
+  {
+    "test": "image noir-atelier",
+    "result": "PASS"
+  },
+  {
+    "test": "detail ignite-fitness",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer ignite-fitness",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp ignite-fitness",
+    "result": "PASS"
+  },
+  {
+    "test": "image ignite-fitness",
+    "result": "PASS"
+  },
+  {
+    "test": "detail orbital-tech",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer orbital-tech",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp orbital-tech",
+    "result": "PASS"
+  },
+  {
+    "test": "image orbital-tech",
+    "result": "PASS"
+  },
+  {
+    "test": "detail sora-sushi",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer sora-sushi",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp sora-sushi",
+    "result": "PASS"
+  },
+  {
+    "test": "image sora-sushi",
+    "result": "PASS"
+  },
+  {
+    "test": "detail vanta-estate",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer vanta-estate",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp vanta-estate",
+    "result": "PASS"
+  },
+  {
+    "test": "image vanta-estate",
+    "result": "PASS"
+  },
+  {
+    "test": "detail echo-sound",
+    "result": "PASS"
+  },
+  {
+    "test": "concept disclaimer echo-sound",
+    "result": "PASS"
+  },
+  {
+    "test": "personalized WhatsApp echo-sound",
+    "result": "PASS"
+  },
+  {
+    "test": "image echo-sound",
+    "result": "PASS"
+  },
+  {
+    "test": "HTTP /projetos/velar-motors",
+    "result": "PASS"
+  },
+  {
+    "test": "HTTP /sitemap.xml",
+    "result": "PASS"
+  },
+  {
+    "test": "HTTP /robots.txt",
+    "result": "PASS"
+  },
+  {
+    "test": "HTTP /og.png",
+    "result": "PASS"
+  },
+  {
+    "test": "HTTP /media/meadow.mp4",
+    "result": "PASS"
+  },
+  {
+    "test": "HTTP /concepts/velar-motors.webp",
+    "result": "PASS"
+  }
+]

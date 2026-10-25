@@ -8,6 +8,20 @@
       "when": 1792967518961,
       "tag": "0000_absent_ricochet",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792968573815,
+      "tag": "0001_late_maggott",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792969706220,
+      "tag": "0002_spicy_prowler",
+      "breakpoints": true
     }
   ]
 }
