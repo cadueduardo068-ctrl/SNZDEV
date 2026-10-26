@@ -1,0 +1,9 @@
+{
+  "workerName": "snz-dev",
+  "d1": {
+    "binding": "DB",
+    "databaseName": "snz-dev",
+    "databaseId": "b0fa8f72-758f-415d-8c46-63e93cb122b2",
+    "migrationsDirectory": "drizzle"
+  }
+}

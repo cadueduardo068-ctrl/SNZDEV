@@ -5,9 +5,8 @@ import { readExecutionProfile } from "./scripts/execution-profile.mjs";
 import { configureToolEnvironment } from "./scripts/tool-environment.mjs";
 import { sites } from "./scripts/vite/sites-vite-plugin";
 import { connectorPreview } from "./scripts/vite/connector-preview-plugin.mjs";
-
-const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
-  "00000000-0000-4000-8000-000000000000";
+import { cloudflareSettings } from "./scripts/cloudflare-settings.mjs";
+const database = cloudflareSettings();
 
 const { d1, r2 } = hostingConfig;
 const standalone = process.env.SNZ_DEPLOYMENT_TARGET === "cloudflare";
@@ -24,8 +23,9 @@ const localBindingConfig = {
     ? [
         {
           binding: d1,
-          database_name: "site-creator-d1",
-          database_id: SITE_CREATOR_PLACEHOLDER_DATABASE_ID,
+          database_name: database.databaseName,
+          database_id: database.databaseId,
+          migrations_dir: database.migrationsDirectory,
         },
       ]
     : [],

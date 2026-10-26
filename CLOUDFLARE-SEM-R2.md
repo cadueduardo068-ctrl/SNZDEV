@@ -30,7 +30,7 @@ Imagens antigas em R2 não são apagadas. A API preserva leitura opcional por `B
 No ambiente de build, configure:
 
 ```text
-CLOUDFLARE_D1_DATABASE_ID=UUID_REAL_DO_D1_EXISTENTE
+CLOUDFLARE_D1_DATABASE_ID=b0fa8f72-758f-415d-8c46-63e93cb122b2
 CLOUDFLARE_D1_DATABASE_NAME=nome-do-banco
 CLOUDFLARE_WORKER_NAME=snz-dev
 ```
@@ -47,15 +47,14 @@ npm run build:cloudflare
 npm run deploy:check
 ```
 
-O build sem UUID real serve apenas para validação local e usa o ID placeholder. **O deploy real é bloqueado enquanto esse ID não for substituído.** `deploy:check` executa somente `wrangler deploy --dry-run`: não publica, não cria buckets e não comprova credenciais remotas.
+O ID real já está versionado em `cloudflare.config.json` e é usado pelo Vite e pelo pós-build. A variável de ambiente é apenas um override opcional; remova valores provisórios antigos. `deploy:check` executa somente `wrangler deploy --dry-run`: não publica, não cria buckets e não comprova credenciais remotas.
 
-Com o D1 existente confirmado e backup feito, aplique **uma única vez**, se ainda não aplicada:
+Para consultar e aplicar somente o schema pendente com backup obrigatório, siga [D1-CONFIGURACAO.md](./D1-CONFIGURACAO.md). Os comandos são:
 
 ```sh
-npx wrangler d1 execute DB --remote --config dist/server/wrangler.json --file drizzle/0003_faulty_vulcan.sql
+npm run db:plan:remote
+npm run db:migrate:remote
 ```
-
-Esse comando assume que as tabelas anteriores já existem. Não reaplique `0000`, `0001` ou `0002` em um banco que já as recebeu. Em um banco novo, pare e restaure o conteúdo/histórico antes de tratar o destino como substituto do existente.
 
 Depois:
 
