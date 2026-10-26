@@ -16,7 +16,7 @@ function wrangler(args,json=false){
   return json?JSON.parse(r.stdout):undefined;
 }
 try{
-  if(!['plan','apply'].includes(mode))throw Error('Use plan ou apply.');
+  if(!['plan','apply','check'].includes(mode))throw Error('Use plan, apply ou check.');
   const target=cloudflareSettings();
   const config=JSON.parse(await readFile(new URL('../dist/server/wrangler.json',import.meta.url),'utf8'));
   if(config.d1_databases?.find(d=>d.binding===target.binding)?.database_id!==target.databaseId)throw Error('Execute npm run build:cloudflare para regenerar o binding correto antes de consultar o banco.');
@@ -30,6 +30,7 @@ try{
   const planFile='work/d1-pending.sql';
   await writeFile(new URL('../'+planFile,import.meta.url),plan.map(s=>'-- '+s.file+'\n'+s.sql).join('\n\n')+'\n');
   console.log(`D1 ${target.databaseId}: ${plan.length} instruções aditivas pendentes. Plano: ${planFile}`);
+  if(mode==='check'&&plan.length)throw Error('Schema remoto incompleto. Revise npm run db:plan:remote e execute npm run db:migrate:remote antes do deploy. Nenhum dado foi alterado.');
   if(mode==='apply'&&plan.length){
     const backup='work/d1-backup-'+Date.now()+'.sql';
     wrangler(['d1','export',target.binding,...common,'--output',backup,'--skip-confirmation']);

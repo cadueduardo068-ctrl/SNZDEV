@@ -1,5 +1,5 @@
 {
-  "workerName": "snz-dev",
+  "workerName": "snzdev",
   "d1": {
     "binding": "DB",
     "databaseName": "snz-dev",

@@ -23,6 +23,7 @@ try{
     await configure();
   }else if(mode==='dry-run'||mode==='deploy'){
     await configure();
+    if(mode==='deploy')run(['scripts/d1-migrate.mjs','check']);
     run(['--import','./scripts/sites-env.mjs','./node_modules/wrangler/bin/wrangler.js','deploy','--config','dist/server/wrangler.json',...(mode==='dry-run'?['--dry-run']:[])]);
   }else throw Error('Use build, dry-run ou deploy.');
 }catch(error){console.error(error.message);process.exitCode=1}
