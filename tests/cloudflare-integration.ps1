@@ -35,7 +35,7 @@ $r=Post @{action='delete';id='qa-integration'};Check 'delete project' $r.StatusC
 $r=Invoke-WebRequest ($origin+'/projetos/qa-integration') -SkipHttpErrorCheck;Check 'deleted detail inaccessible' $r.StatusCode 404
 $homepageResponse=Invoke-WebRequest $origin;Check 'visitor phone input removed' ($homepageResponse.Content -match 'name="phone"') $false
 $rows=((Invoke-WebRequest ($origin+'/api/admin') -WebSession $session).Content|ConvertFrom-Json).projects
-Check 'eight visible concepts' @($rows|Where-Object visible).Count 8
+Check 'seven visible concepts' @($rows|Where-Object visible).Count 7
 Check 'no decorative section numbers' ($homepageResponse.Content -match '0[1-8] /') $false
 foreach($p in @($rows|Where-Object visible)){
  $r=Invoke-WebRequest ($origin+'/projetos/'+$p.id)

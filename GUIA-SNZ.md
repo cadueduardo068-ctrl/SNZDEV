@@ -16,7 +16,7 @@ Excluir um projeto remove seu registro, mas preserva arquivos de mídia para nã
 
 ## Conteúdo conceitual
 
-A vitrine apresenta Velar Motors, Aura Architecture, Noir Atelier, Ignite Fitness, Orbital Tech, Sora Sushi, Vanta Estate e Echo Sound. São marcas fictícias, identificadas como **Projeto conceitual**. As imagens representam a primeira tela de uma proposta visual; não são sites completos ou funcionalidades implementadas para terceiros.
+A vitrine apresenta Sora Sushi em destaque, Aura Architecture, Noir Atelier, Ignite Fitness, Orbital Tech, Vanta Estate e Echo Sound. Velar Motors permanece cadastrado e oculto. São marcas fictícias, identificadas como **Projeto conceitual**. As imagens representam a primeira tela de uma proposta visual; não são sites completos ou funcionalidades implementadas para terceiros.
 
 Os textos das interfaces estão em português brasileiro. Nomes próprios das marcas foram mantidos conforme o briefing. Os PNGs originais estão no pacote de imagens da entrega. O site usa WebP em 1600 × 900 e 720 × 405, escolhidos por `srcset`. A galeria mostra a imagem completa, sem cortar sua tipografia. Cada página permite ampliar a imagem.
 
