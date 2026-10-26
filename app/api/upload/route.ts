@@ -1,4 +1,24 @@
-import {rateLimit} from '../../../lib/rate-limit';
 import {env} from 'cloudflare:workers';
 import {authorized} from '../admin/route';
-export async function POST(req:Request){if(!await authorized()||req.headers.get('origin')!==new URL(req.url).origin)return Response.json({error:'Não autorizado'},{status:403});if(!await rateLimit('upload',20))return Response.json({error:'Aguarde um minuto.'},{status:429});const type=req.headers.get('content-type')||'';if(!['image/jpeg','image/png','image/webp'].includes(type))return Response.json({error:'Formato não permitido'},{status:400});if(Number(req.headers.get('content-length'))>5242880)return Response.json({error:'Limite de 5 MB'},{status:413});const data=await req.arrayBuffer();if(data.byteLength>5242880)return Response.json({error:'Limite de 5 MB'},{status:413});const bytes=new Uint8Array(data);const valid=type==='image/jpeg'?bytes[0]===255&&bytes[1]===216:type==='image/png'?bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71:String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP';if(!valid)return Response.json({error:'Arquivo inválido'},{status:400});const key=crypto.randomUUID();await env.BUCKET.put(key,data,{httpMetadata:{contentType:type}});return Response.json({url:'/api/images/'+key})}
+import {rateLimit} from '../../../lib/rate-limit';
+import {IMAGE_TYPES, ImageInputError, readImageBody, saveImage} from '../../../lib/image-store';
+
+export async function POST(request: Request) {
+  if (!await authorized() || request.headers.get('origin') !== new URL(request.url).origin) {
+    return Response.json({error:'Não autorizado'}, {status:403});
+  }
+  if (!env.DB) return Response.json({error:'Armazenamento indisponível.'}, {status:503});
+  const type = request.headers.get('content-type') || '';
+  if (!IMAGE_TYPES.has(type)) return Response.json({error:'Use JPEG, PNG ou WebP.'}, {status:400});
+  try {
+    if (!await rateLimit('upload',20)) return Response.json({error:'Aguarde um minuto.'}, {status:429});
+    const bytes = await readImageBody(request);
+    const id = crypto.randomUUID();
+    await saveImage(env.DB, id, bytes, type);
+    return Response.json({url:'/api/images/'+id}, {headers:{'Cache-Control':'no-store'}});
+  } catch (error) {
+    if (error instanceof ImageInputError) return Response.json({error:error.message}, {status:error.status});
+    console.error('Falha ao persistir imagem no D1.');
+    return Response.json({error:'Não foi possível salvar a imagem. Verifique a configuração e as migrações do D1.'}, {status:503});
+  }
+}

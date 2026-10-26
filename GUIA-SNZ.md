@@ -1,10 +1,10 @@
 # SNZ DEV
 
-Portfólio em React e TypeScript, executado com Vinext em Cloudflare Workers. D1 persiste o conteúdo; R2 guarda imagens enviadas no painel. O mesmo site e a autorização administrativa foram preservados.
+Portfólio em React e TypeScript, executado com Vinext em Cloudflare Workers. D1 persiste conteúdo e imagens enviadas no painel, sem exigir R2. O mesmo site e a autorização administrativa foram preservados.
 
 ## Acessar e editar
 
-Acesse `/admin` e entre pelo ChatGPT com `cadueduardo068@gmail.com`. A variável de servidor `ADMIN_EMAIL` autoriza essa conta. Sem autenticação e autorização, as operações retornam 403. Nenhuma credencial administrativa fica no frontend.
+Na hospedagem Sites, acesse `/admin` e entre pelo ChatGPT com `cadueduardo068@gmail.com`. Para uma publicação independente, configure Cloudflare Access conforme `CLOUDFLARE-SEM-R2.md`. A variável de servidor `ADMIN_EMAIL` autoriza essa conta. Sem autenticação e autorização, as operações retornam 403. Nenhuma credencial administrativa fica no frontend.
 
 O painel permite adicionar e editar conceitos, enviar uma capa JPEG/PNG/WebP de até 5 MB, alterar categoria e descrição, cadastrar direção de arte e paleta, escolher imagens complementares, reordenar, destacar, ocultar e excluir. Use uma cor hexadecimal por item da paleta, separada por vírgulas. O campo de ordem e as setas definem a sequência dentro do grupo de destaques ou dos demais itens.
 
@@ -12,7 +12,7 @@ Marque **Visível no site público** para apresentar o conceito. Desmarcar tamb�
 
 **Importar conceitos SNZ** adiciona os oito conceitos fornecidos nesta entrega. A operação não sobrescreve registros de mesmos IDs nem suas edições; trabalhos de outros IDs são preservados no banco e ocultados da vitrine. Não use essa ação para recuperar um conceito apagado com conteúdo personalizado: nesse caso, ela restaura somente o conteúdo inicial fornecido.
 
-Excluir um projeto remove seu registro, mas preserva arquivos R2 para não apagar imagens compartilhadas acidentalmente. Imagens órfãs podem ser limpas pelo responsável na configuração do Storage.
+Excluir um projeto remove seu registro, mas preserva arquivos de mídia para não apagar imagens compartilhadas acidentalmente. Imagens órfãs podem ser limpas pelo responsável na configuração do Storage.
 
 ## Conteúdo conceitual
 
@@ -34,6 +34,6 @@ Execute `npm run install:ci`, depois `npm run dev`. Para checar tipos: `node nod
 
 Alterações no schema exigem `npm run db:generate`. As migrações existentes são imutáveis; acrescente outra migração. Para preview local, use o comando D1 documentado no README com o nome exato da migração pendente. As migrações desta entrega apenas adicionam colunas, sem apagar dados.
 
-Publique atualizações pelo fluxo Sites, usando o projeto já registrado em `.openai/hosting.json`. Ele sincroniza o código, aplica migrações e publica o Worker com os bindings D1 `DB` e R2 `BUCKET`. Segredos ficam nas variáveis de ambiente do Sites. A audiência privada foi preservada; libere o acesso nas configurações do Sites antes de divulgar o link a clientes.
+Publique atualizações pelo fluxo Sites, usando o projeto já registrado em `.openai/hosting.json`. Ele sincroniza o código, aplica migrações e publica o Worker com o binding D1 `DB`. Segredos ficam nas variáveis de ambiente do Sites. A audiência privada foi preservada; libere o acesso nas configurações do Sites antes de divulgar o link a clientes.
 
 Uma publicação independente em Cloudflare exige configurar Workers, D1, R2, domínio e autenticação verificada (por exemplo Cloudflare Access). O login desta entrega é fornecido pelo Sites: os cabeçalhos de identidade não devem ser aceitos diretamente de visitantes em outra hospedagem. Não publique esse código em uma origem externa sem substituir essa fronteira de autenticação. Atualize canonical, sitemap e Open Graph ao definir outro domínio.

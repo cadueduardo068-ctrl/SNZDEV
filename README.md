@@ -1,3 +1,7 @@
+# SNZ DEV — publicação sem R2
+
+Consulte [CLOUDFLARE-SEM-R2.md](./CLOUDFLARE-SEM-R2.md) para publicar o site completo em Workers com D1, uploads persistentes e autenticação administrativa. Não use export estático nem preset Next.js. A documentação abaixo descreve o starter original.
+
 # vinext-starter
 
 A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
